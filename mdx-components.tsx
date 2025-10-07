@@ -1,47 +1,18 @@
 import type { MDXComponents } from 'mdx/types'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     pre: ({ children, ...props }) => {
-      const codeElement = children?.props
-      const code = codeElement?.children?.trim() || ''
-      const language = codeElement?.className?.replace('language-', '') || 'text'
-
-      if (language === 'text') {
-        return (
-          <pre {...props}>
-            <code>{children}</code>
-          </pre>
-        )
-      }
-
       return (
-        <SyntaxHighlighter
-          style={vscDarkPlus}
-          language={language}
-          PreTag="div"
-          {...props}
-        >
-          {code}
-        </SyntaxHighlighter>
+        <pre className="bg-slate-800 p-4 rounded-lg overflow-x-auto border border-slate-700" {...props}>
+          {children}
+        </pre>
       )
     },
     code: ({ children, className, ...props }) => {
-      const match = /language-(\w+)/.exec(className || '')
-      return match ? (
-        <SyntaxHighlighter
-          style={vscDarkPlus}
-          language={match[1]}
-          PreTag="div"
-          {...props}
-        >
-          {String(children).replace(/\n$/, '')}
-        </SyntaxHighlighter>
-      ) : (
-        <code className={className} {...props}>
+      return (
+        <code className={`${className} bg-slate-700 px-1 py-0.5 rounded text-sm`} {...props}>
           {children}
         </code>
       )
