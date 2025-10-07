@@ -6,20 +6,20 @@ export default function BlogPage() {
   const posts = getAllPosts()
 
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-gray-900 text-gray-100">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-lg font-medium text-gray-900 hover:text-gray-600 transition-colors">
+            <Link href="/" className="text-lg font-medium text-gray-100 hover:text-gray-300 transition-colors">
               Ajit Bhaskaran
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="/#work" className="text-gray-600 hover:text-gray-900 transition-colors">Work</a>
-              <a href="/#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-              <a href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
-              <a href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+              <a href="/#work" className="text-gray-400 hover:text-gray-100 transition-colors">Work</a>
+              <a href="/#about" className="text-gray-400 hover:text-gray-100 transition-colors">About</a>
+              <a href="/blog" className="text-gray-400 hover:text-gray-100 transition-colors">Blog</a>
+              <a href="/#contact" className="text-gray-400 hover:text-gray-100 transition-colors">Contact</a>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -27,7 +27,7 @@ export default function BlogPage() {
                 href="https://github.com/Ajit-Bhaskaran" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                className="text-gray-400 hover:text-gray-100 transition-colors"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -39,10 +39,10 @@ export default function BlogPage() {
       {/* Header */}
       <div className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-light text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-light text-gray-100 mb-6">
             Recent writing
           </h1>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className="text-lg text-gray-300 leading-relaxed">
             Insights, tutorials, and case studies from 16+ years of DevOps and Platform Engineering experience. 
             From cost optimization strategies to infrastructure automation best practices.
           </p>
@@ -87,7 +87,7 @@ export default function BlogPage() {
                 
                 <Link 
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-gray-900 hover:text-gray-600 transition-colors text-sm"
+                  className="inline-flex items-center text-gray-100 hover:text-gray-300 transition-colors text-sm"
                 >
                   Read more
                   <ArrowRight className="w-3 h-3 ml-1" />
@@ -98,8 +98,8 @@ export default function BlogPage() {
         </div>
 
         {/* Back to home */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <Link href="/" className="inline-flex items-center text-gray-900 hover:text-gray-600 transition-colors">
+          <div className="mt-16 pt-8 border-t border-gray-700">
+          <Link href="/" className="inline-flex items-center text-gray-100 hover:text-gray-300 transition-colors">
             ← Back to home
           </Link>
         </div>
