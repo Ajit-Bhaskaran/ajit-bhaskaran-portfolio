@@ -34,7 +34,7 @@ export default function WorkPage() {
       </nav>
 
       {/* Header */}
-      <div className="pt-32 pb-16 px-6">
+      <div className="pt-32 pb-8 px-6">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-light text-gray-100 mb-6">
             Work
@@ -47,7 +47,7 @@ export default function WorkPage() {
       </div>
 
       {/* Projects Section */}
-      <section className="py-16 px-6">
+      <section className="py-8 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center mb-8">
             <h2 className="text-2xl font-light text-gray-100">Projects</h2>
@@ -165,7 +165,6 @@ export default function WorkPage() {
             <div className="border-l-2 border-gray-600 pl-6">
               <div className="flex items-start justify-between mb-2">
                 <h3 className="text-lg font-medium text-gray-100">Senior Platform Engineer</h3>
-                <span className="text-sm text-gray-400">2023 - Present</span>
               </div>
               <p className="text-gray-400 mb-3">SAS Institute</p>
               <ul className="text-gray-300 space-y-2 text-sm">
@@ -188,7 +187,6 @@ export default function WorkPage() {
             <div className="border-l-2 border-gray-600 pl-6">
               <div className="flex items-start justify-between mb-2">
                 <h3 className="text-lg font-medium text-gray-100">Senior Analyst DevOps Engineer</h3>
-                <span className="text-sm text-gray-400">2022 - 2023</span>
               </div>
               <p className="text-gray-400 mb-3">Bureau of Meteorology</p>
               <ul className="text-gray-300 space-y-2 text-sm">
@@ -211,7 +209,6 @@ export default function WorkPage() {
             <div className="border-l-2 border-gray-600 pl-6">
               <div className="flex items-start justify-between mb-2">
                 <h3 className="text-lg font-medium text-gray-100">Senior Analyst DevOps Engineer</h3>
-                <span className="text-sm text-gray-400">2020 - 2022</span>
               </div>
               <p className="text-gray-400 mb-3">National Australia Bank</p>
               <ul className="text-gray-300 space-y-2 text-sm">
@@ -238,11 +235,11 @@ export default function WorkPage() {
               <ul className="text-gray-300 space-y-1 text-sm">
                 <li className="flex items-start">
                   <ArrowRight className="w-3 h-3 text-gray-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>Huawei</strong> - Team Lead (2010-2012)</span>
+                  <span><strong>Huawei</strong> - Team Lead</span>
                 </li>
                 <li className="flex items-start">
                   <ArrowRight className="w-3 h-3 text-gray-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>Oracle</strong> - Principal Consultant (2007-2010)</span>
+                  <span><strong>Oracle</strong> - Principal Consultant</span>
                 </li>
               </ul>
             </div>
