@@ -44,186 +44,112 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const relatedPosts = getRelatedPosts(slug, 2)
 
   return (
-    <main className="min-h-screen bg-slate-900 text-slate-300">
+    <main className="min-h-screen bg-white text-gray-900">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-sm border-b border-slate-800 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-xl font-bold text-slate-100">Ajit Bhaskaran</Link>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/#about" className="text-slate-400 hover:text-slate-100 transition-colors">About</Link>
-              <Link href="/#experience" className="text-slate-400 hover:text-slate-100 transition-colors">Experience</Link>
-              <Link href="/#projects" className="text-slate-400 hover:text-slate-100 transition-colors">Projects</Link>
-              <Link href="/blog" className="text-slate-400 hover:text-slate-100 transition-colors">Blog</Link>
-              <Link href="/#contact" className="text-slate-400 hover:text-slate-100 transition-colors">Contact</Link>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="text-lg font-medium text-gray-900 hover:text-gray-600 transition-colors">
+              Ajit Bhaskaran
+            </Link>
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="/#work" className="text-gray-600 hover:text-gray-900 transition-colors">Work</a>
+              <a href="/#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+              <a href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+              <a href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
             </div>
+
+            <Link href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* Header */}
-      <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      {/* Article Header */}
+      <article className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <Link 
-            href="/blog" 
-            className="inline-flex items-center text-teal-400 hover:text-green-300 mb-8 transition-colors font-mono"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Link>
-          
-          <div className="flex flex-wrap gap-2 mb-6">
-            {post.tags.map((tag) => (
-              <span 
-                key={tag}
-                className="px-3 py-1 bg-gray-700 text-slate-300 text-sm rounded-full font-mono"
-              >
-                {tag}
-              </span>
-            ))}
+          {/* Back link */}
+          <div className="mb-8">
+            <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to blog
+            </Link>
           </div>
-          
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-100 mb-6 leading-tight">
-            {post.title}
-          </h1>
-          
-          <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-            {post.excerpt}
-          </p>
-          
-          <div className="flex items-center space-x-6 text-sm text-gray-500">
-            <div className="flex items-center">
-              <Calendar className="w-4 h-4 mr-2" />
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </div>
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
-              {post.readingTime} min read
-            </div>
-            <div className="text-slate-400 font-mono">
-              By {post.author}
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Article Content */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-slate-800 rounded-lg border border-slate-700 p-8 md:p-12">
-          <div className="prose prose-lg max-w-none prose-invert">
+          {/* Article meta */}
+          <div className="mb-8">
+            <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+              <div className="flex items-center">
+                <Calendar className="w-4 h-4 mr-2" />
+                {new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 mr-2" />
+                {post.readingTime} min read
+              </div>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 leading-tight">
+              {post.title}
+            </h1>
+            
+            <p className="text-xl text-gray-700 leading-relaxed mb-6">
+              {post.excerpt}
+            </p>
+            
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span 
+                  key={tag}
+                  className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Article content */}
+          <div className="prose prose-lg max-w-none">
             <MDXRemote source={post.content} />
           </div>
+
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-16 pt-8 border-t border-gray-200">
+              <h3 className="text-xl font-medium text-gray-900 mb-6">Related articles</h3>
+              <div className="space-y-6">
+                {relatedPosts.map((relatedPost) => (
+                  <article key={relatedPost.slug} className="group">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                        <Link href={`/blog/${relatedPost.slug}`}>
+                          {relatedPost.title}
+                        </Link>
+                      </h4>
+                      <span className="text-sm text-gray-500">
+                        {new Date(relatedPost.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short'
+                        })}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      {relatedPost.excerpt}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </article>
-
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 text-center">
-            Related Articles
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {relatedPosts.map((relatedPost) => (
-              <article key={relatedPost.slug} className="bg-slate-800 rounded-lg border border-slate-700 hover:border-green-400 transition-colors">
-                <div className="p-6">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {relatedPost.tags.slice(0, 3).map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-2 py-1 bg-gray-700 text-slate-300 text-xs rounded-full font-mono"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-slate-100 mb-3">
-                    <Link 
-                      href={`/blog/${relatedPost.slug}`}
-                      className="hover:text-teal-400 transition-colors"
-                    >
-                      {relatedPost.title}
-                    </Link>
-                  </h3>
-                  
-                  <p className="text-slate-400 mb-4 line-clamp-3">
-                    {relatedPost.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-gray-500">
-                      {new Date(relatedPost.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </div>
-                    
-                    <Link 
-                      href={`/blog/${relatedPost.slug}`}
-                      className="inline-flex items-center text-teal-400 hover:text-green-300 font-mono transition-colors"
-                    >
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Newsletter Signup */}
-      <section className="bg-slate-800 border border-slate-700 rounded-lg mx-4 sm:mx-6 lg:mx-8 my-16">
-        <div className="p-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-4">
-            Enjoyed This Article?
-          </h2>
-          <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
-            Subscribe to get notified when I publish new technical insights about DevOps, 
-            cloud optimization, and platform engineering.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-slate-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-            />
-            <button className="px-6 py-2 bg-green-400 text-gray-900 font-mono rounded-md hover:bg-green-300 transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Navigation */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex justify-between items-center">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center text-slate-400 hover:text-slate-100 transition-colors font-mono"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              All Articles
-            </Link>
-            
-            <Link 
-              href="/" 
-              className="inline-flex items-center text-teal-400 hover:text-green-300 transition-colors font-mono"
-            >
-              Back to Portfolio
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </div>
-        </div>
-      </div>
     </main>
   )
 }
